@@ -1,0 +1,10 @@
+/* Background machinery image with glass login card */
+.machinery-bg {
+  background-image: url('https://images.unsplash.com/photo-1517420704952-d9f39e95b43c?auto=format&fit=crop&w=1600&q=60');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  min-height: 100vh;
+}
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); backdrop-filter: blur(2px); }
+.glass { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }

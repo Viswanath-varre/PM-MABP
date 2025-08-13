@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MABP – P&M Data Management</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="bg-dark text-light machinery-bg">
+  <div class="overlay"></div>
+  <nav class="navbar navbar-dark bg-transparent">
+    <div class="container">
+      <span class="navbar-brand fw-semibold">MABP – P&M Data Management</span>
+      <a class="btn btn-outline-light" href="#about">About</a>
+    </div>
+  </nav>
+
+  <main class="container d-flex flex-column align-items-center justify-content-center" style="min-height: 70vh;">
+    <div class="card glass p-4 w-100" style="max-width: 420px;">
+      <h3 class="mb-3 text-center">Welcome back</h3>
+      <p class="text-center text-secondary mb-4">“Keeping machines moving, keeps projects moving.”</p>
+      <form id="loginForm" class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <input type="text" name="username" class="form-control" required placeholder="e.g., admin">
+          <div class="invalid-feedback">Username required</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input type="password" name="password" class="form-control" required placeholder="••••••">
+          <div class="invalid-feedback">Password required</div>
+        </div>
+        <button class="btn btn-primary w-100" type="submit">Sign in</button>
+        <div id="loginMsg" class="form-text text-danger mt-2"></div>
+      </form>
+      <div class="text-center mt-3">
+        <small class="text-secondary">Default admin: <code>admin / admin</code> (change later)</small>
+      </div>
+    </div>
+  </main>
+
+  <section id="about" class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <div class="card bg-dark border-0 shadow-lg p-4">
+          <h4 class="mb-3">About the Plant & Machinery Department</h4>
+          <p class="lead text-secondary">
+            We are the backbone of our bridge and civil infrastructure projects — planning, operating, and maintaining
+            cranes, DG sets, boom placers, and heavy equipment across the full stretch. Our mission is simple:
+            <strong>put reliable machines where the work needs them</strong>.
+          </p>
+          <p class="text-secondary mb-0">
+            MABP – P&M Data Management unifies asset locations, running hours, fuel activity, and site logs into one
+            place. With clean uploads and clear permissions, admins manage data and users while engineers get the exact
+            information they need to keep productivity high and downtime low.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+  const form = document.getElementById('loginForm');
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    if(!form.checkValidity()){
+      form.classList.add('was-validated');
+      return;
+    }
+    const fd = new FormData(form);
+    const body = {username: fd.get('username'), password: fd.get('password')};
+    document.getElementById('loginMsg').textContent = 'Signing in...';
+    try{
+      const r = await fetch('/api/login', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
+      const j = await r.json();
+      if(!j.ok){ document.getElementById('loginMsg').textContent = j.error || 'Login failed'; return; }
+      if(j.role === 'admin') window.location.href = '/admin'; else window.location.href = '/user';
+    }catch(err){
+      document.getElementById('loginMsg').textContent = err.message;
+    }
+  });
+  </script>
+</body>
+</html>
