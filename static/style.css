@@ -1,0 +1,11 @@
+
+body { background: #0f172a; color: #e2e8f0; }
+.navbar, .sidebar { background: #111827; }
+.card { background: #1f2937; border: none; }
+.table thead th { background: #0b1220; color: #93c5fd; }
+.btn-primary { background:#2563eb; border-color:#2563eb; }
+a, .nav-link { color:#93c5fd; }
+.sidebar { position:fixed; top:0; bottom:0; left:0; width:240px; padding:1rem; overflow-y:auto; }
+.content { margin-left:260px; padding:1rem; }
+.footer { color:#64748b; font-size:12px; margin-top:2rem;}
+input.form-control, select.form-select { background:#0b1220; color:#e2e8f0; border:1px solid #334155; }

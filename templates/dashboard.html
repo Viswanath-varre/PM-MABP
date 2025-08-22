@@ -1,0 +1,20 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4">Dashboard</h2>
+<div class="row g-3">
+  <div class="col-md-3">
+    <div class="card p-3">
+      <div class="text-secondary">Users</div>
+      <div class="fs-3">{{ users|default(0) }}</div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card p-3">
+      <div class="text-secondary">Recent Uploads</div>
+      <div class="fs-3">{{ uploads|default(0) }}</div>
+    </div>
+  </div>
+</div>
+<p class="mt-4 text-secondary">Use the sidebar to manage users and upload data files.</p>
+{% endblock %}
