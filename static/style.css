@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 body { background: #0f172a; color: #e2e8f0; }
 .navbar, .sidebar { background: #111827; }
@@ -9,3 +10,15 @@ a, .nav-link { color:#93c5fd; }
 .content { margin-left:260px; padding:1rem; }
 .footer { color:#64748b; font-size:12px; margin-top:2rem;}
 input.form-control, select.form-select { background:#0b1220; color:#e2e8f0; border:1px solid #334155; }
+=======
+/* Background machinery image with glass login card */
+.machinery-bg {
+  background-image: url('https://images.unsplash.com/photo-1517420704952-d9f39e95b43c?auto=format&fit=crop&w=1600&q=60');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  min-height: 100vh;
+}
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); backdrop-filter: blur(2px); }
+.glass { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+>>>>>>> 2397d8df16d4a6e20bb99032762094942f04e240
